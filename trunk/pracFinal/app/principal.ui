@@ -1,0 +1,1714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Principal</class>
+ <widget class="QWidget" name="Principal">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>763</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Principal</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_7">
+   <item row="0" column="0">
+    <widget class="GLWidget" name="gLWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>400</height>
+      </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTabWidget" name="pestanyes">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>Opcions de joc</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Nombre d'enemics</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QSpinBox" name="enemics">
+           <property name="maximum">
+            <number>6</number>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Tamany Laberint</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QSpinBox" name="tamanylab">
+           <property name="minimum">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <number>50</number>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="CarregaPersonatgeButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>17</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Carrega Personatge</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Orientació del model</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QRadioButton" name="dreta">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Dreta</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="esquerra">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Esquerra</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="amunt">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Amunt</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="avall">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Avall</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="8" column="0">
+          <widget class="QPushButton" name="ReiniciaCameraButton">
+           <property name="text">
+            <string>Reinicia Càmera</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QPushButton" name="primeraPersonaButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Càmera Primera Persona</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="11" column="0">
+          <widget class="QPushButton" name="ComencaJocButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Comença el Joc</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <widget class="QPushButton" name="AturaJocButton">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Finalitza/Reinicia Joc</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="0">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="12" column="0">
+          <widget class="QPushButton" name="pauseButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Pausa Joc</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QPushButton" name="enemiesButton">
+           <property name="text">
+            <string>Carrega Enemics</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>Il·luminació</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0" colspan="2">
+          <widget class="QFrame" name="frame">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_13">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Face Culling</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <widget class="QPushButton" name="cullingOn">
+                  <property name="text">
+                   <string>On</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="cullingOff">
+                  <property name="text">
+                   <string>Off</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QFrame" name="frame_2">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="0" column="0" colspan="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Llum Ambiental</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QPushButton" name="focusOn">
+                  <property name="text">
+                   <string>On</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="focusOff">
+                  <property name="text">
+                   <string>Off</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Red</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSlider" name="redFocus">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Green</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSlider" name="greenFocus">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Blue</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QSlider" name="blueFocus">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="3" column="0" rowspan="2" colspan="2">
+          <widget class="QFrame" name="frame_4">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0" colspan="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Llum del personatge</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <widget class="QPushButton" name="spotOn">
+                  <property name="text">
+                   <string>On</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="spotOff">
+                  <property name="text">
+                   <string>Off</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_23">
+              <property name="text">
+               <string>Red</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSlider" name="redSpot">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_24">
+              <property name="text">
+               <string>Green</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSlider" name="greenSpot">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_25">
+              <property name="text">
+               <string>Blue</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSlider" name="blueSpot">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QFrame" name="frame_3">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0" colspan="3">
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Focus Superior</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_9">
+                <item>
+                 <widget class="QPushButton" name="ambientOn">
+                  <property name="text">
+                   <string>On</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="ambientOff">
+                  <property name="text">
+                   <string>Off</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0" colspan="3">
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <widget class="QLabel" name="label_10">
+                  <property name="text">
+                   <string>Pos X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="focusX">
+                  <property name="singleStep">
+                   <double>0.100000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>5.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>PosY</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="focusY">
+                  <property name="singleStep">
+                   <double>0.100000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>5.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_19">
+              <property name="text">
+               <string>Red</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" rowspan="2" colspan="2">
+             <widget class="QSlider" name="redAmbient">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="singleStep">
+               <number>1</number>
+              </property>
+              <property name="value">
+               <number>60</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string>Green</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>Blue</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1" colspan="2">
+             <widget class="QSlider" name="blueAmbient">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>60</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QSlider" name="greenAmbient">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>60</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>&amp;Exit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>setSolidWireframe()</slot>
+    <slot>setCameraLight(bool)</slot>
+    <slot>LoadCharacter()</slot>
+    <slot>CarregaPersonatge()</slot>
+    <slot>canviaLaberint(int)</slot>
+    <slot>canviaEnemics(int)</slot>
+    <slot>aturaJoc()</slot>
+    <slot>resetCamera()</slot>
+    <slot>primeraPersona()</slot>
+    <slot>startGame()</slot>
+    <slot>rotateDown()</slot>
+    <slot>rotateUp()</slot>
+    <slot>rotateLeft()</slot>
+    <slot>rotateRight()</slot>
+    <slot>enableCulling()</slot>
+    <slot>disableCulling()</slot>
+    <slot>enableFocus()</slot>
+    <slot>disableFocus()</slot>
+    <slot>enableAmbientalLight()</slot>
+    <slot>disableAmbientalLight()</slot>
+    <slot>enableSpot()</slot>
+    <slot>disableSpot()</slot>
+    <slot>setRedSpot(int)</slot>
+    <slot>setGreenSpot(int)</slot>
+    <slot>setBlueSpot(int)</slot>
+    <slot>setRedFocus(int)</slot>
+    <slot>setGreenFocus(int)</slot>
+    <slot>setBlueFocus(int)</slot>
+    <slot>setRedAmbientalLight(int)</slot>
+    <slot>setGreenAmbientalLight(int)</slot>
+    <slot>setBlueAmbientalLight(int)</slot>
+    <slot>setFocusX(double)</slot>
+    <slot>setFocusZ(double)</slot>
+    <slot>pausaJoc()</slot>
+    <slot>carregaEnemics()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Principal</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>756</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>643</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CarregaPersonatge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>646</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>26</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enemics</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>canviaEnemics(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>353</x>
+     <y>60</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tamanylab</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>canviaLaberint(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>aturaJoc()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>739</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ReiniciaCameraButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>resetCamera()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>315</x>
+     <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>enemics</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>573</x>
+     <y>54</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>tamanylab</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>638</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>tamanylab</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>739</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>619</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>enemics</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>739</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>596</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>primeraPersonaButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>primeraPersona()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>336</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>avall</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>645</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>747</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>amunt</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>739</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>747</x>
+     <y>232</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>esquerra</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>614</x>
+     <y>448</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>645</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dreta</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>747</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>startGame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>380</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>AturaJocButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ComencaJocButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>739</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dreta</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>747</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>esquerra</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>747</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>amunt</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>747</x>
+     <y>232</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>avall</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>579</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>avall</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>602</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>amunt</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>580</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>esquerra</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>625</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dreta</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>555</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ComencaJocButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CarregaPersonatgeButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>primeraPersonaButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>561</x>
+     <y>332</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>CarregaPersonatgeButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>CarregaPersonatgeButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>605</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ComencaJocButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>401</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dreta</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>rotateRight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>747</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>369</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>esquerra</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>rotateLeft()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>747</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>363</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>amunt</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>rotateUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>747</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>370</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>avall</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>rotateDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>747</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>371</x>
+     <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cullingOn</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>enableCulling()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>667</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>363</x>
+     <y>54</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cullingOff</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>disableCulling()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>387</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>focusOn</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>enableAmbientalLight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>667</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>focusOff</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>disableAmbientalLight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ambientOn</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>enableFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>667</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>391</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ambientOff</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>disableFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>388</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spotOn</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>enableSpot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>669</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>409</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spotOff</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>disableSpot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>713</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>redFocus</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setRedAmbientalLight(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>501</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>greenFocus</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setGreenAmbientalLight(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>510</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>blueFocus</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setBlueAmbientalLight(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>510</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>focusX</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setFocusX(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>693</x>
+     <y>240</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>focusY</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setFocusZ(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>695</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>503</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>redAmbient</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setRedFocus(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>greenAmbient</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setGreenFocus(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>629</x>
+     <y>323</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>503</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>blueAmbient</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setBlueFocus(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>redSpot</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setBlueSpot(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>488</x>
+     <y>435</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>greenSpot</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setGreenSpot(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>448</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>460</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>blueSpot</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>setBlueSpot(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>475</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>485</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ComencaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>pauseButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>705</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>703</x>
+     <y>429</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>pauseButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>682</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>683</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pauseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>pausaJoc()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>550</x>
+     <y>429</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>416</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enemiesButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>carregaEnemics()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>562</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pauseButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ComencaJocButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>654</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>657</x>
+     <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AturaJocButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>enemiesButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enemiesButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>enemiesButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>694</x>
+     <y>277</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>717</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

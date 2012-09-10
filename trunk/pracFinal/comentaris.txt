@@ -1,0 +1,70 @@
+Andreu Marimon Aguadé
+47962476R
+andreu.marimon
+andreumarimon@gmail.com
+
+************************************
+PROJECTE DE VIG
+************************************
+
+Perdut entre els murs del laberint, el nostre protagonista només té una opció per sobreviure: eliminar tots aquells enemics que pretenen acabar amb la seva vida.
+
+L'objectiu d'aquest senzill joc és aconseguir sobreviure el màxim d'estona possible o eliminar tots els enemics que trobis a l'escenari. Per fer-ho, podràs moure't i
+modificar la forma del laberint mentre dispares cubs per acabar amb cadascun dels personatges que volen eliminar-te. La vida del nostre heroi està a les teves mans!!
+
+--------------------------------
+INSTRUCCIONS :
+---------------------------------
+
+- Escena:
+L'escena consta d'un laberint de 10*10 caselles on es veuen representades amb color vermell les cel·les no caminables i en gris les caminables. Com veurem, aquest
+laberint es pot modificar.
+
+
+- Orientació del laberient
+El programa permet realitzar una rotació al voltant de tota l'escena o laberint desplaçant el ratolí mentre mantens apretat el botó esquerre.
+
+- Zoom
+Pots "apropar" i allunyar la càmera a l'escena mitjançant la tecla "shift" el el botó esquerre de ratolí. Deplaçant el ratolí amunt i avall podrem modificar el zoom actual.
+
+- Pan
+Prement ctrl i movent el ratolí pots moure la posició de la càmera 
+
+- Canviar el terreny
+Prement el botó central del ratolí pots intercanviar el tipus de terreny d'una casella entre "terra" i "paret".
+
+- Panell lateral, pestanya d'opcions de joc.
+Tenim un panell lateral amb les opcions següents:
+  Nombre d'enemics: Escull la dificultat del joc.
+  Modificar mida laberint: Permet canviar el nombre de caselles del costat del laberint.
+  Carrega personatge: Permet carregar el model que preferim per a utilitzar com a protagonista.
+  Sel·lecció de direcció: Permet oriental el model que hem carregat en la direcció que considerem adient per tal de fer coincidir el davant del model amb el del personatge.
+  Carrega Enemis: Permet carregar el model que preferim per a utilitzar com a enemic
+  Reinicia càmera: Permet tornar la càmera a la posició inicial.
+  Càmera primera persona: Permet situar la càmera des del punt de vista del personatge.
+  
+  Comença el joc: Comença el joc
+  Pausa el joc: Atura el joc sense que acabi la partida
+  Atura el joc: Permet eliminar els models i acabar el joc
+  
+- Pantell lateral, pestanya Il·luminació
+    Face Culling: Permet activar o desactivar el renderitzatge de cares ocultes
+    Llum ambiental: Referint-se a la llum d'ambient de l'escena
+      On/off: Activa desactiva
+      Controls de color: Canvia el color de la llum
+    Llum ambiental: Referint-se a la llum focal superior
+      On/off: Activa desactiva
+      Posició x i y: Canvia la posició del llum
+      Controls de color: Canvia el color de la llum
+    Llum ambiental: Referint-se a la llanterna del personage principal
+      On/off: Activa desactiva
+      Controls de color: Canvia el color de la llum
+ 
+- Controls Moviments del personatge
+  - Podem moure el personatge endavant i enrere amb les tecles de direcció amunt i avall respectivament. Esquerra i dreta ens permetran girar 90 graus en aquesta direcció
+  - Podem disparar cubs prement la tecla x. Només podem disparar un cub cada vegada i no podrem tornar a fer-ho fins que el primer no hagi trobat un obstacle. En aquest cas,
+  el cub desapareix. Si impacta amb un enemic, l'elimina.
+
+
+- Final
+  Si un enemic entra en contacte amb el personatge, el joc acaba. El mateix passarà si és el personatge qui ho fa o si acabes amb tot els enemics.
