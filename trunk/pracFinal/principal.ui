@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Principal</class>
+ <widget class="QWidget" name="Principal">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>917</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Principal</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="GLWidget" name="gLWidget" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>525</width>
+         <height>400</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50000</width>
+         <height>50000</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="fps">
+         <property name="frameShape">
+          <enum>QFrame::WinPanel</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="fpsText">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string>FPS</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>180</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="minimumSize">
+           <size>
+            <width>180</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>280</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>Escena</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QGroupBox" name="scenePanel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="title">
+               <string>Opcions de l'escena</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <widget class="QPushButton" name="pushButton_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Carregar Objecte</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="reset">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Reset escena</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="renderBox">
+              <property name="title">
+               <string>Opcions de pintat</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <widget class="QRadioButton" name="immediateButton">
+                 <property name="text">
+                  <string>Immediat</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="vertexArrayButton">
+                 <property name="text">
+                  <string>Vertex Array</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="bufferObjectButton">
+                 <property name="text">
+                  <string>Vertex Buffer Oject</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_3">
+              <property name="text">
+               <string>Z-Buffer + Culling</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Tab 2</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7"/>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&amp;Exit</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.h</header>
+   <container>1</container>
+   <slots>
+    <signal>setMessage(String)</signal>
+    <slot>LoadObject()</slot>
+    <slot>setSolidWireframe()</slot>
+    <slot>setCameraLight(bool)</slot>
+    <slot>LoadCharacter()</slot>
+    <slot>Reset()</slot>
+    <slot>modeEdicio()</slot>
+    <slot>changeLightMode(bool)</slot>
+    <slot>changeLight0()</slot>
+    <slot>hiddenParts()</slot>
+    <slot>editLight()</slot>
+    <slot>resetPerspective()</slot>
+    <slot>moureSeg()</slot>
+    <slot>changeR(int)</slot>
+    <slot>changeG(int)</slot>
+    <slot>changeB(int)</slot>
+    <slot>changeR0(int)</slot>
+    <slot>changeG0(int)</slot>
+    <slot>changeB0(int)</slot>
+    <slot>changeHeight(int)</slot>
+    <slot>activateLight(bool)</slot>
+    <slot>eliminarFocus()</slot>
+    <slot>SetLightId(int)</slot>
+    <slot>iniInspeccio()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Principal</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>894</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>643</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>reset</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>Reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>757</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_3</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>hiddenParts()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>884</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadObject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>757</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
