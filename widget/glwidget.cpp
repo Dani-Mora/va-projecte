@@ -300,9 +300,9 @@ void GLWidget::LoadObject()
     mod.readObj(nomModel, Scene::matlib);
     scene.setModel(mod);
 
-    if (this->renderType == VERTEX_ARRAY)
+    if (this->renderType == VERTEX_ARRAY || this->renderType == BUFFER_OBJECT)
     {
-        modelObj.generateVertexArray();
+        mod.saveModelToServer();
     }
 
     // Afegim objecte a l'escena

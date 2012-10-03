@@ -40,8 +40,7 @@ void Model::printVertexArray () {
 }
 
 
-
-void Model::generateVertexArray()
+void Model::saveModelToServer()
 {
     this->vertexNumber = this->faces.size()*3;
 
@@ -52,8 +51,6 @@ void Model::generateVertexArray()
     cout << "El model té " << faces.size() << " cares" << endl;
     cout << "Consequentment, té " << vertexNumber*3 << " vertexs" << endl;
     for(unsigned int cara = 0; cara < faces.size(); ++cara) {
-
-        Color currentColor = Scene().matlib.material(faces[cara].material).kd;
 
         for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
         {
@@ -73,31 +70,32 @@ void Model::generateVertexArray()
     this->printVertexArray();
 }
 
+void Model::sendToBuffer()
+{
+    // TODO trobar llibreria per les comandes seguents
+
+    /*
+    GLuint bufferId;
+    // We are being provided the id of a free buffer object
+    glGenBuffers(1, &bufferId);
+    // We specify the buffer object mode and we provide the id given by the server side
+    glBindBuffer(GL_ARRAY_BUFFER_ARB, bufferId);
+    // We send the data to the buffer object
+    glBufferDataARB(GL_ARRAY_BUFFER_ARB, this->vertexNumber * 3, this->vertexs, GL_STATIC_DRAW_ARB);*/
+}
+
 void Model::renderVertexArray()
 {
-
-
-    cout << "Start render" << endl;
     glEnableClientState(GL_VERTEX_ARRAY);
-    //glEnableClientState(GL_COLOR_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
-    cout << "Vertex Array enabled" << endl;
-
     glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
-    //glColorPointer(3, GL_FLOAT, 0, this->colors);
     glNormalPointer(GL_FLOAT, 0, this->normals);
-
-    cout << "Vertex Array created" << endl;
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
-    cout << "Vertex Array drawn" << endl;
     glDisableClientState(GL_VERTEX_ARRAY);
-    //glDisableClientState(GL_COLOR_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
-
-    cout << "finish render" << endl;
 }
 
 /* Render del model amb il·luminacio, usant materials */

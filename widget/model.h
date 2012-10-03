@@ -29,8 +29,10 @@ class Model
   void RenderColor();
   void RenderLight();
   void RenderColorFals(int id);
-  void generateVertexArray();
   void renderVertexArray();
+  void saveModelToServer();
+  void sendToBuffer();
+
 
   float *vertexs;
   float *normals;
