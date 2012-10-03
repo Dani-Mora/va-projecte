@@ -154,22 +154,42 @@ void GLWidget::setCamera()
     else  gluPerspective(fovy, aspect , zNear, zFar);
 }
 
+
 void GLWidget::paintGL( void )
 {
 
+    cout << "Entro render " << endl;
+
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
   this->setCamera();
 
-  // dibuixar eixos aplicacio
+  // Axis
   glBegin(GL_LINES);
   glColor3f(1,0,0); glVertex3f(0,0,0); glVertex3f(20,0,0); // X
   glColor3f(0,1,0); glVertex3f(0,0,0); glVertex3f(0,20,0); // Y
   glColor3f(0,0,1); glVertex3f(0,0,0); glVertex3f(0,0,20); // Z
   glEnd();
 
-  // Pinto escena
-  //scene.RenderLight();
-  scene.RenderVAO();
+  // Scene Render depending on the render mode
+  switch(renderType)
+  {
+
+   cout << "Render type";
+
+    case (VERTEX_ARRAY):
+        cout << "Vertex Array" << endl;
+      this->scene.RenderVertexArray();
+      break;
+    case (BUFFER_OBJECT):
+       cout << "Vertex Buffer Object" << endl;
+      this->scene.renderVertexBufferObject();
+      break;
+    default:
+       cout << "Immediate" << endl;
+      this->scene.RenderLight();
+      break;
+  };
 }  
 
 
@@ -320,15 +340,21 @@ void GLWidget::Reset()
 
 void GLWidget::setImmediateRender()
 {
+    cout << "immediate mode" << endl;
     renderType = IMMEDIATE;
+    updateGL();
 }
 
 void GLWidget::setVertexArrayRender()
 {
+    cout << "vertex array" << endl;
     renderType = VERTEX_ARRAY;
+    updateGL();
 }
 
 void GLWidget::setVertexBufferObjectRender()
 {
+        cout << "vertex array" << endl;
     renderType = BUFFER_OBJECT;
+    updateGL();
 }
