@@ -33,7 +33,7 @@ void Model::updateBoundingBox()
 
 void Model::printVertexArray () {
     cout << "Vertex Array: [";
-    for (unsigned int pos = 0; pos < vertexNumber; ++pos) {
+    for (unsigned int pos = 0; pos < vertexNumber*3; ++pos) {
         cout << this->vertexs[pos] << " ";
     }
     cout << "]" << endl;
@@ -44,15 +44,17 @@ void Model::printVertexArray () {
 void Model::generateVertexArray()
 {
 
-    this->vertexNumber = this->faces.size()*3*3;
+    this->vertexNumber = this->faces.size()*3;
 
     // Calculem la mida del vector de normals i de vèrtexs
-    normals = (float*) malloc(vertexNumber);
-    vertexs = (float*) malloc(vertexNumber);
+    normals = (float*) malloc(sizeof(float)*vertexNumber*3);
+    vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
 
-    for(unsigned int cara = 0; cara < faces.size(); cara++) {
+    cout << "El model té " << faces.size() << " cares" << endl;
+    cout << "Consequentment, té " << vertexNumber*3 << " vertexs" << endl;
+    for(unsigned int cara = 0; cara < faces.size(); ++cara) {
 
-        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); vertex++)
+        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
         {
           // Assignem les normals de la cara al vector del Array de normals
           this->normals[cara*3*3+vertex*3] = faces[cara].normal.x;
@@ -118,7 +120,6 @@ void Model::renderVertexArray()
 
 
     cout << "Start render" << endl;
-
     glEnableClientState(GL_VERTEX_ARRAY);
     //glEnableClientState(GL_COLOR_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
