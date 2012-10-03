@@ -31,8 +31,11 @@ class Model
   void RenderColorFals(int id);
   void generateVertexArray();
   void renderVertexArray();
-  int vertexsAmount; // provisional
 
+  float vertexs[];
+  float normals[];
+  float colors[];
+  int vertexNumber;
 
   void setCaraSel(int c);
   int caraSel;

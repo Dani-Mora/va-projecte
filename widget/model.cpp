@@ -33,35 +33,71 @@ void Model::updateBoundingBox()
 
 void Model::generateVertexArray()
 {
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_COLOR_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
+    /*
+    int auxiliar = 0;
+
+
+    cout << "inicialitzem vectors " << endl;
+
+    float vertexsA[size];
+    //float colorsA[size];
+    //float normalsA[size];
+
+    this->vertexNumber = 0;
 
     for(unsigned int faceCounter = 0; faceCounter < this->faces.size(); faceCounter++) {
+
+        cout << "Cara: " << faceCounter << endl;
 
       Face currentFace = this->faces[faceCounter];
 
       // This is the color the next vertexs will be painted. now we use the especular one
       Color s = Scene().matlib.material(this->faces[faceCounter].material).ks;
-      float currentColor[] =  {s.r, s.g, s.b, 1.0};
-      float currentNormal[] = {currentFace.normal.x, currentFace.normal.y,currentFace.normal.z};
+      //float currentColor[] =  {s.r, s.g, s.b, 1.0};
+      //float currentNormal[] = {currentFace.normal.x, currentFace.normal.y,currentFace.normal.z};
 
       for (unsigned int vertex = 0; vertex < faces[faceCounter].vertices.size(); vertex++)
       {
-          Vertex current = this->vertices[currentFace.vertices[vertex]];
-          float vertexPointer[] = {current.coord.x, current.coord.y, current.coord.z};
-          glVertexPointer(3,  GL_FLOAT, 0, vertexPointer);
-          glColorPointer(4, GL_FLOAT, 0, currentColor);
-          glNormalPointer(GL_FLOAT, 0, currentNormal);
+          cout << "Vertex: " << vertex << endl;
 
-          ++this->vertexsAmount;
+          Point currentVertexPosition = this->vertices[currentFace.vertices[vertex]].coord;
+
+          vertexsA[vertexNumber] = currentVertexPosition.x;
+          vertexsA[vertexNumber+1] = currentVertexPosition.y;
+          vertexsA[vertexNumber+2] = currentVertexPosition.z;
+
+          vertexNumber += 3;
       }
+
+      this->vertexs = vertexsA;
     }
+
+    cout << "Init finalitzat" << endl;
+    */
+
+
 }
 
 void Model::renderVertexArray()
 {
-    glDrawArrays(GL_POLYGON, 0, this->vertexsAmount);
+
+    cout << "Start render" << endl;
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+
+    glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
+    glColorPointer(3, GL_FLOAT, 0, this->colors);
+    glNormalPointer(GL_FLOAT, 0, this->normals);
+
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_COLOR_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+
+    cout << "finish render" << endl;
 }
 
 /* Render del model amb il·luminacio, usant materials */
