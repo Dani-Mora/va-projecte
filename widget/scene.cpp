@@ -179,7 +179,6 @@ Objecte Scene::obteObjecte(int num)
 void Scene::setModel(Model &modelOb)
 {
     modelObj = modelOb;
-    modelObj.generateVertexArray();
 }
 
 Model Scene::getModel()

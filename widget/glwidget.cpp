@@ -267,7 +267,6 @@ void GLWidget::mouseMoveEvent(QMouseEvent *e)
 /* Modifica l'VRP i el fovy en mode perspectiva */
 void GLWidget::camOptima(float radi, Point centre)
 {
-
     // fem que l'objecte s'ajusti al màxim a la camara
     float cc = (eye.x - centre.x) * (eye.x - centre.x) + (eye.y - centre.y) * (eye.y - centre.y) + (eye.z - centre.z) * (eye.z - centre.z);
     cc = sqrt(cc);
@@ -278,7 +277,6 @@ void GLWidget::camOptima(float radi, Point centre)
 
     fovy = 2*angle; // actualitzem angle obertura
     VRP = centre; // actualitzem punt on mirem
-
 }
 
 
@@ -301,6 +299,11 @@ void GLWidget::LoadObject()
     Model mod("Model1");
     mod.readObj(nomModel, Scene::matlib);
     scene.setModel(mod);
+
+    if (this->renderType == VERTEX_ARRAY)
+    {
+        modelObj.generateVertexArray();
+    }
 
     // Afegim objecte a l'escena
     Objecte ob("Objecte",Point(0,0,0),float(2.0),float(1.0)); //creem objecte
