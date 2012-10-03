@@ -31,8 +31,43 @@ void Model::updateBoundingBox()
 /* VERTEX ARRAY */
 
 
+void Model::printVertexArray () {
+    cout << "Vertex Array: [";
+    for (unsigned int pos = 0; pos < vertexNumber; ++pos) {
+        cout << this->vertexs[pos] << " ";
+    }
+    cout << "]" << endl;
+}
+
+
+
 void Model::generateVertexArray()
 {
+
+    this->vertexNumber = this->faces.size()*3*3;
+
+    // Calculem la mida del vector de normals i de vèrtexs
+    normals = (float*) malloc(vertexNumber);
+    vertexs = (float*) malloc(vertexNumber);
+
+    for(unsigned int cara = 0; cara < faces.size(); cara++) {
+
+        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); vertex++)
+        {
+          // Assignem les normals de la cara al vector del Array de normals
+          this->normals[cara*3*3+vertex*3] = faces[cara].normal.x;
+          this->normals[cara*3*3+vertex*3+1] = faces[cara].normal.y;
+          this->normals[cara*3*3+vertex*3+2] = faces[cara].normal.z;
+
+          // Assignem els vertxs als vertex array
+          Point p = vertices[faces[cara].vertices[vertex]].coord;
+          this->vertexs [cara*3*3+vertex*3] = p.x;
+          this->vertexs[cara*3*3+vertex*3+1] = p.y;
+          this->vertexs[cara*3*3+vertex*3+2] = p.z;
+        }
+    }
+
+    this->printVertexArray();
     /*
     int auxiliar = 0;
 
@@ -81,20 +116,26 @@ void Model::generateVertexArray()
 void Model::renderVertexArray()
 {
 
+
     cout << "Start render" << endl;
 
     glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_COLOR_ARRAY);
+    //glEnableClientState(GL_COLOR_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
+    cout << "Vertex Array enabled" << endl;
+
     glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
-    glColorPointer(3, GL_FLOAT, 0, this->colors);
+    //glColorPointer(3, GL_FLOAT, 0, this->colors);
     glNormalPointer(GL_FLOAT, 0, this->normals);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    cout << "Vertex Array created" << endl;
 
+    glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
+
+    cout << "Vertex Array drawn" << endl;
     glDisableClientState(GL_VERTEX_ARRAY);
-    glDisableClientState(GL_COLOR_ARRAY);
+    //glDisableClientState(GL_COLOR_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
 
     cout << "finish render" << endl;
@@ -211,6 +252,7 @@ void Model::setCaraSel(int c)
 {
     this->caraSel = c;
 }
+
 
 /*
 Lectura d'un fitxer OBJ

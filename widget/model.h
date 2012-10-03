@@ -32,9 +32,9 @@ class Model
   void generateVertexArray();
   void renderVertexArray();
 
-  float vertexs[];
-  float normals[];
-  float colors[];
+  float *vertexs;
+  float *normals;
+  //float *colors;
   int vertexNumber;
 
   void setCaraSel(int c);
@@ -44,6 +44,7 @@ class Model
   void make_face ( char **words, int nwords, int material );
   void netejaDades ();
   void computeNormals();
+  void printVertexArray();
 
  public:
   vector<Vertex> vertices;  // vector amb els vertexs de l'objecte
