@@ -178,6 +178,7 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         immediateButton = new QRadioButton(renderBox);
         immediateButton->setObjectName(QString::fromUtf8("immediateButton"));
+        immediateButton->setChecked(true);
 
         verticalLayout_2->addWidget(immediateButton);
 

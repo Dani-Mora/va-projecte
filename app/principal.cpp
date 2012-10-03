@@ -6,6 +6,10 @@ Principal::Principal(QWidget *parent) :
     ui(new Ui::Principal)
 {
     ui->setupUi(this);
+
+    this->connect(this->ui->immediateButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setImmediateRender()));
+    this->connect(this->ui->vertexArrayButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexArrayRender()));
+    this->connect(this->ui->bufferObjectButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexBufferObjectRender()));
 }
 
 Principal::~Principal()
