@@ -34,7 +34,6 @@ class Model
 
   float *vertexs;
   float *normals;
-  //float *colors;
   int vertexNumber;
 
   void setCaraSel(int c);

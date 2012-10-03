@@ -141,7 +141,7 @@ void Scene::RenderLight()
   capsa.Render();
 }
 
-void Scene::RenderVAO()
+void Scene::RenderVertexArray()
 {
     polBase.RenderLight();
 
@@ -150,6 +150,11 @@ void Scene::RenderVAO()
     // calculo capsa escena i pinto
     this->calcularCapsa();
     capsa.Render();
+}
+
+void Scene::renderVertexBufferObject()
+{
+    // ...
 }
 
 /* Objctes a l'scene */

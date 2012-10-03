@@ -43,16 +43,17 @@ void Model::printVertexArray () {
 
 void Model::generateVertexArray()
 {
-
     this->vertexNumber = this->faces.size()*3;
 
     // Calculem la mida del vector de normals i de vèrtexs
-    normals = (float*) malloc(sizeof(float)*vertexNumber*3);
-    vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
+    this->normals = (float*) malloc(sizeof(float)*vertexNumber*3);
+    this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
 
     cout << "El model té " << faces.size() << " cares" << endl;
     cout << "Consequentment, té " << vertexNumber*3 << " vertexs" << endl;
     for(unsigned int cara = 0; cara < faces.size(); ++cara) {
+
+        Color currentColor = Scene().matlib.material(faces[cara].material).kd;
 
         for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
         {
@@ -70,49 +71,6 @@ void Model::generateVertexArray()
     }
 
     this->printVertexArray();
-    /*
-    int auxiliar = 0;
-
-
-    cout << "inicialitzem vectors " << endl;
-
-    float vertexsA[size];
-    //float colorsA[size];
-    //float normalsA[size];
-
-    this->vertexNumber = 0;
-
-    for(unsigned int faceCounter = 0; faceCounter < this->faces.size(); faceCounter++) {
-
-        cout << "Cara: " << faceCounter << endl;
-
-      Face currentFace = this->faces[faceCounter];
-
-      // This is the color the next vertexs will be painted. now we use the especular one
-      Color s = Scene().matlib.material(this->faces[faceCounter].material).ks;
-      //float currentColor[] =  {s.r, s.g, s.b, 1.0};
-      //float currentNormal[] = {currentFace.normal.x, currentFace.normal.y,currentFace.normal.z};
-
-      for (unsigned int vertex = 0; vertex < faces[faceCounter].vertices.size(); vertex++)
-      {
-          cout << "Vertex: " << vertex << endl;
-
-          Point currentVertexPosition = this->vertices[currentFace.vertices[vertex]].coord;
-
-          vertexsA[vertexNumber] = currentVertexPosition.x;
-          vertexsA[vertexNumber+1] = currentVertexPosition.y;
-          vertexsA[vertexNumber+2] = currentVertexPosition.z;
-
-          vertexNumber += 3;
-      }
-
-      this->vertexs = vertexsA;
-    }
-
-    cout << "Init finalitzat" << endl;
-    */
-
-
 }
 
 void Model::renderVertexArray()
@@ -155,6 +113,7 @@ void Model::RenderLight()
     Color d = Scene().matlib.material(faces[cara].material).kd;
     Color s = Scene().matlib.material(faces[cara].material).ks;
     GLfloat shine = Scene().matlib.material(faces[cara].material).shininess;
+
     if ((unsigned int)this->caraSel == cara) {
         GLfloat ams[4] =  {1- a.r, 1 - a.g, 1- a.b, 1.0};
         GLfloat difs[4] = {1- d.r, 1 - d.g, 1 - d.b, 1.0};
