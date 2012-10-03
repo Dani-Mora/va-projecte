@@ -134,7 +134,7 @@ void Scene::RenderLight()
 {
   polBase.RenderLight();
 
-  for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,2);
+  for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,3);
 
   // calculo capsa escena i pinto
   this->calcularCapsa();
@@ -145,7 +145,7 @@ void Scene::RenderVAO()
 {
     polBase.RenderLight();
 
-    for (unsigned int i = 0; i < lobjectes.size(); ++i) this->getModel().renderVertexArray();
+    for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,2);
 
     // calculo capsa escena i pinto
     this->calcularCapsa();

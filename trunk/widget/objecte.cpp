@@ -72,13 +72,13 @@ void Objecte::Render(Model &modelObj, int mode)
 
     if (mode == 0) modelObj.RenderColor();
     else if (mode == 1) modelObj.RenderColorFals(this->getId());
+    else if (mode == 2) modelObj.renderVertexArray();
     else modelObj.RenderLight();
 
     modelObj.boundingBox().Render();
     glPopMatrix();
 
     // la capsa es calcula be pero no es rota be :_
-
 }
 
 std::string Objecte::getNom()
