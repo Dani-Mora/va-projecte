@@ -1,5 +1,3 @@
-#define GL_GLEXT_PROTOTYPES
-
 #include "model.h"
 #include <cmath>
 #include <string>
@@ -42,19 +40,18 @@ void Model::printVertexArray () {
 }
 
 
-void Model::saveModelToServer()
+
+void Model::generateVertexArray()
 {
+
     this->vertexNumber = this->faces.size()*3;
 
     // Calculem la mida del vector de normals i de vèrtexs
-    this->normals = (float*) malloc(sizeof(float)*vertexNumber*3);
-    this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
-
-    cout << "Punter als vertexs: " << this->vertexs << endl;
+    normals = (float*) malloc(sizeof(float)*vertexNumber*3);
+    vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
 
     cout << "El model té " << faces.size() << " cares" << endl;
     cout << "Consequentment, té " << vertexNumber*3 << " vertexs" << endl;
-
     for(unsigned int cara = 0; cara < faces.size(); ++cara) {
 
         for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
@@ -71,135 +68,31 @@ void Model::saveModelToServer()
           this->vertexs[cara*3*3+vertex*3+2] = p.z;
         }
     }
-     cout << "*****************************************" << this->vertexs << endl;
 
-     cout << "PRIMER RENDER" << endl;
-
-     cout << "Punter als vertexs: " << this->vertexs << endl;
-
-     glEnableClientState(GL_VERTEX_ARRAY);
-     glEnableClientState(GL_NORMAL_ARRAY);
-
-     glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
-     glNormalPointer(GL_FLOAT, 0, this->normals);
-
-     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
-
-     glDisableClientState(GL_VERTEX_ARRAY);
-     glDisableClientState(GL_NORMAL_ARRAY);
-
-   // this->printVertexArray();
-/*
-    this->vertexNumber = this->faces.size()*3;
-    this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3*2);
-
-    int offset = 0;
-
-    for(unsigned int cara = 0; cara < faces.size(); ++cara) {
-
-        Face currentFace = faces[cara];
-
-        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
-        {
-          // Assignem les normals de la cara al vector del Array de normals
-          this->vertexs[offset++] = currentFace.normal.x;
-          this->vertexs[offset++] = currentFace.normal.y;
-          this->vertexs[offset++] = currentFace.normal.z;
-
-          // Assignem els vertxs als vertex array
-          Point currentPosition = vertices[faces[cara].vertices[vertex]].coord;
-          this->vertexs[offset++] = currentPosition.x;
-          this->vertexs[offset++] = currentPosition.y;
-          this->vertexs[offset++] = currentPosition.z;
-        }
-
-        offset += 9;
-    }*/
+    this->printVertexArray();
 }
 
-void Model::sendToBuffer()
-{  /*
-    // Create data to send to the buffer
-
-    int vertexAmount = this->faces.size() * 3;
-    long dataSize = sizeof(Vertex) * vertexAmount * 2;
-    float *data = (float*) malloc(dataSize);
-
-    int offset = 0;
-
-    for(unsigned int cara = 0; cara < faces.size(); ++cara) {
-
-        Face currentFace = faces[cara];
-
-        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
-        {
-          // Assignem les normals de la cara al vector del Array de normals
-          data[offset++] = currentFace.normal.x;
-          data[offset++] = currentFace.normal.y;
-          data[offset++] = currentFace.normal.z;
-
-          // Assignem els vertxs als vertex array
-          Point currentPosition = vertices[faces[cara].vertices[vertex]].coord;
-          data[offset++] = currentPosition.x;
-          data[offset++] = currentPosition.y;
-          data[offset++] = currentPosition.z;
-        }
-
-        offset += 9;
-    }
-
-    // We are being provided the id of a free buffer object
-    glGenBuffers(1, &bufferId);
-    // We specify the buffer object mode and we provide the id given by the server side
-    glBindBuffer(GL_ARRAY_BUFFER_ARB, bufferId);
-
-    // We send the data to the buffer
-    glBufferDataARB(GL_ARRAY_BUFFER_ARB, this->vertexNumber * 3, this->vertexs, GL_STATIC_DRAW_ARB);
-    //glBufferData(GL_ARRAY_BUFFER, dataSize, data, GL_STATIC_DRAW);*/
-}
-
-void Model::RenderVBO()
-{/*
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, vboId1);
-
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-
-    glNormalPointer(GL_FLOAT, sizeof(Vertex), 0);
-    glVertexPointer(3, GL_FLOAT, sizeof(Vertex), 3);
-
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);*/
-}
-
-void Model::RenderVertexArray()
+void Model::renderVertexArray()
 {
-    cout << "Render vertex array arribo" << endl;
-
-    cout << "Punter als vertexs: " << this->vertexs << endl;
-
+    cout << "Start render" << endl;
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
-    glVertexPointer(3, GL_FLOAT, 0, &this->vertexs);
-    glNormalPointer(GL_FLOAT, 0, &this->normals);
+    cout << "Vertex Array enabled" << endl;
+
+    glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
+    //glColorPointer(3, GL_FLOAT, 0, this->colors);
+    glNormalPointer(GL_FLOAT, 0, this->normals);
+
+    cout << "Vertex Array created" << endl;
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
+    cout << "Vertex Array drawn" << endl;
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
 
-    /*
-
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-
-    glVertexPointer(3, GL_FLOAT, 3, this->vertexs);
-    glNormalPointer(GL_FLOAT, 0, this->normals);
-
-    glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
-
-    glDisableClientState(GL_VERTEX_ARRAY);
-    glDisableClientState(GL_NORMAL_ARRAY);*/
+    cout << "finish render" << endl;
 }
 
 /* Render del model amb il·luminacio, usant materials */
@@ -215,7 +108,6 @@ void Model::RenderLight()
     Color d = Scene().matlib.material(faces[cara].material).kd;
     Color s = Scene().matlib.material(faces[cara].material).ks;
     GLfloat shine = Scene().matlib.material(faces[cara].material).shininess;
-
     if ((unsigned int)this->caraSel == cara) {
         GLfloat ams[4] =  {1- a.r, 1 - a.g, 1- a.b, 1.0};
         GLfloat difs[4] = {1- d.r, 1 - d.g, 1 - d.b, 1.0};

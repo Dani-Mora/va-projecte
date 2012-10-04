@@ -154,17 +154,13 @@ void GLWidget::setCamera()
     else  gluPerspective(fovy, aspect , zNear, zFar);
 }
 
-
 void GLWidget::paintGL( void )
 {
 
-    cout << "Entro render " << endl;
-
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
   this->setCamera();
 
-  // Axis
+  // dibuixar eixos aplicacio
   glBegin(GL_LINES);
   glColor3f(1,0,0); glVertex3f(0,0,0); glVertex3f(20,0,0); // X
   glColor3f(0,1,0); glVertex3f(0,0,0); glVertex3f(0,20,0); // Y
@@ -267,6 +263,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *e)
 /* Modifica l'VRP i el fovy en mode perspectiva */
 void GLWidget::camOptima(float radi, Point centre)
 {
+
     // fem que l'objecte s'ajusti al màxim a la camara
     float cc = (eye.x - centre.x) * (eye.x - centre.x) + (eye.y - centre.y) * (eye.y - centre.y) + (eye.z - centre.z) * (eye.z - centre.z);
     cc = sqrt(cc);
@@ -277,6 +274,7 @@ void GLWidget::camOptima(float radi, Point centre)
 
     fovy = 2*angle; // actualitzem angle obertura
     VRP = centre; // actualitzem punt on mirem
+
 }
 
 
@@ -299,14 +297,6 @@ void GLWidget::LoadObject()
     Model mod("Model1");
     mod.readObj(nomModel, Scene::matlib);
     scene.setModel(mod);
-
-    // We send the model to the server (VA)
-    if (this->renderType == VERTEX_ARRAY)
-    {
-        mod.saveModelToServer();
-    }
-    // We initialize the buffer object that'll contain the model (VBO)
-    mod.sendToBuffer();
 
     // Afegim objecte a l'escena
     Objecte ob("Objecte",Point(0,0,0),float(2.0),float(1.0)); //creem objecte
@@ -346,21 +336,21 @@ void GLWidget::Reset()
 
 void GLWidget::setImmediateRender()
 {
-    cout << "Entro immediate mode" << endl;
+    cout << "Render type: immediate" << endl;
     renderType = IMMEDIATE;
     updateGL();
 }
 
 void GLWidget::setVertexArrayRender()
 {
-    cout << "Entro vertex array" << endl;
+    cout << "Render type: vertex array" << endl;
     renderType = VERTEX_ARRAY;
     updateGL();
 }
 
 void GLWidget::setVertexBufferObjectRender()
 {
-    cout << "Entro vertex buffer Object" << endl;
+    cout << "Render type: buffer object" << endl;
     renderType = BUFFER_OBJECT;
     updateGL();
 }

@@ -110,6 +110,7 @@ void Scene::construirBase ()
 
 /* Renders */
 
+
 void Scene::BasicRender(int mode)
 {
     polBase.RenderLight();
@@ -144,11 +145,6 @@ void Scene::RenderVertexArray()
     this->BasicRender(2);
 }
 
-void Scene::renderVertexBufferObject()
-{
-    this->BasicRender(3);
-}
-
 /* Objctes a l'scene */
 
 void Scene::AddObjecte(Objecte &oref)
@@ -171,6 +167,7 @@ Objecte Scene::obteObjecte(int num)
 void Scene::setModel(Model &modelOb)
 {
     modelObj = modelOb;
+    modelObj.generateVertexArray();
 }
 
 Model Scene::getModel()
