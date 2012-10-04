@@ -145,6 +145,11 @@ void Scene::RenderVertexArray()
     this->BasicRender(2);
 }
 
+void Scene::RenderVertexBufferObject()
+{
+    this->BasicRender(3);
+}
+
 /* Objctes a l'scene */
 
 void Scene::AddObjecte(Objecte &oref)

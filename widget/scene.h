@@ -40,7 +40,7 @@ class Scene
   void RenderLight();
   void RenderBack();
   void RenderVertexArray();
-  void renderVertexBufferObject();
+  void RenderVertexBufferObject();
 
   void AddOneObject(Objecte &); // afegeix un sol objecte i borra els anterior
   void AddObjecte(Objecte &); // afegeix un objecte mes
