@@ -110,51 +110,43 @@ void Scene::construirBase ()
 
 /* Renders */
 
-// Render de l'escena usant colors
-void Scene::RenderColor()
-{
-
-  polBase.RenderColor();
-
-  for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,0);
-
-  // calculo capsa escena i pinto
-  this->calcularCapsa();
-  capsa.Render();
-}
-
-// Render de l'escena amb color fals
-void Scene::RenderBack()
-{
-  for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,1);
-}
-
-// Render de l'escena usant materials -> il·luminació
-void Scene::RenderLight()
-{
-  polBase.RenderLight();
-
-  for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,3);
-
-  // calculo capsa escena i pinto
-  this->calcularCapsa();
-  capsa.Render();
-}
-
-void Scene::RenderVertexArray()
+void Scene::BasicRender(int mode)
 {
     polBase.RenderLight();
 
-    for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,2);
+    for (unsigned int i = 0; i < lobjectes.size(); ++i) lobjectes[i].Render(modelObj,mode);
 
     // calculo capsa escena i pinto
     this->calcularCapsa();
     capsa.Render();
 }
 
+// Render de l'escena usant colors
+void Scene::RenderColor()
+{
+    this->BasicRender(0);
+}
+
+// Render de l'escena amb color fals
+void Scene::RenderBack()
+{
+    this->BasicRender(1);
+}
+
+// Render de l'escena usant materials -> il·luminació
+void Scene::RenderLight()
+{
+    this->BasicRender(4);
+}
+
+void Scene::RenderVertexArray()
+{
+    this->BasicRender(2);
+}
+
 void Scene::renderVertexBufferObject()
 {
-    // ...
+    this->BasicRender(3);
 }
 
 /* Objctes a l'scene */

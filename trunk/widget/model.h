@@ -29,14 +29,18 @@ class Model
   void RenderColor();
   void RenderLight();
   void RenderColorFals(int id);
-  void renderVertexArray();
-  void saveModelToServer();
-  void sendToBuffer();
 
-
+  // Vertex Array
   float *vertexs;
   float *normals;
   int vertexNumber;
+  void saveModelToServer();
+  void RenderVertexArray();
+
+  // Vertex Buffer Object
+  int bufferId;
+  void sendToBuffer();
+  void RenderVBO();
 
   void setCaraSel(int c);
   int caraSel;

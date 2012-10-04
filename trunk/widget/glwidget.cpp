@@ -300,10 +300,13 @@ void GLWidget::LoadObject()
     mod.readObj(nomModel, Scene::matlib);
     scene.setModel(mod);
 
-    if (this->renderType == VERTEX_ARRAY || this->renderType == BUFFER_OBJECT)
+    // We send the model to the server (VA)
+    if (this->renderType == VERTEX_ARRAY)
     {
         mod.saveModelToServer();
     }
+    // We initialize the buffer object that'll contain the model (VBO)
+    mod.sendToBuffer();
 
     // Afegim objecte a l'escena
     Objecte ob("Objecte",Point(0,0,0),float(2.0),float(1.0)); //creem objecte
@@ -343,21 +346,21 @@ void GLWidget::Reset()
 
 void GLWidget::setImmediateRender()
 {
-    cout << "immediate mode" << endl;
+    cout << "Entro immediate mode" << endl;
     renderType = IMMEDIATE;
     updateGL();
 }
 
 void GLWidget::setVertexArrayRender()
 {
-    cout << "vertex array" << endl;
+    cout << "Entro vertex array" << endl;
     renderType = VERTEX_ARRAY;
     updateGL();
 }
 
 void GLWidget::setVertexBufferObjectRender()
 {
-        cout << "vertex array" << endl;
+    cout << "Entro vertex buffer Object" << endl;
     renderType = BUFFER_OBJECT;
     updateGL();
 }
