@@ -1,3 +1,5 @@
+#define GL_GLEXT_PROTOTYPES
+
 #include "model.h"
 #include <cmath>
 #include <string>
@@ -48,8 +50,11 @@ void Model::saveModelToServer()
     this->normals = (float*) malloc(sizeof(float)*vertexNumber*3);
     this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
 
+    cout << "Punter als vertexs: " << this->vertexs << endl;
+
     cout << "El model té " << faces.size() << " cares" << endl;
     cout << "Consequentment, té " << vertexNumber*3 << " vertexs" << endl;
+
     for(unsigned int cara = 0; cara < faces.size(); ++cara) {
 
         for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
@@ -66,36 +71,135 @@ void Model::saveModelToServer()
           this->vertexs[cara*3*3+vertex*3+2] = p.z;
         }
     }
+     cout << "*****************************************" << this->vertexs << endl;
 
-    this->printVertexArray();
+     cout << "PRIMER RENDER" << endl;
+
+     cout << "Punter als vertexs: " << this->vertexs << endl;
+
+     glEnableClientState(GL_VERTEX_ARRAY);
+     glEnableClientState(GL_NORMAL_ARRAY);
+
+     glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
+     glNormalPointer(GL_FLOAT, 0, this->normals);
+
+     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
+
+     glDisableClientState(GL_VERTEX_ARRAY);
+     glDisableClientState(GL_NORMAL_ARRAY);
+
+   // this->printVertexArray();
+/*
+    this->vertexNumber = this->faces.size()*3;
+    this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3*2);
+
+    int offset = 0;
+
+    for(unsigned int cara = 0; cara < faces.size(); ++cara) {
+
+        Face currentFace = faces[cara];
+
+        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
+        {
+          // Assignem les normals de la cara al vector del Array de normals
+          this->vertexs[offset++] = currentFace.normal.x;
+          this->vertexs[offset++] = currentFace.normal.y;
+          this->vertexs[offset++] = currentFace.normal.z;
+
+          // Assignem els vertxs als vertex array
+          Point currentPosition = vertices[faces[cara].vertices[vertex]].coord;
+          this->vertexs[offset++] = currentPosition.x;
+          this->vertexs[offset++] = currentPosition.y;
+          this->vertexs[offset++] = currentPosition.z;
+        }
+
+        offset += 9;
+    }*/
 }
 
 void Model::sendToBuffer()
-{
-    // TODO trobar llibreria per les comandes seguents
+{  /*
+    // Create data to send to the buffer
 
-    /*
-    GLuint bufferId;
+    int vertexAmount = this->faces.size() * 3;
+    long dataSize = sizeof(Vertex) * vertexAmount * 2;
+    float *data = (float*) malloc(dataSize);
+
+    int offset = 0;
+
+    for(unsigned int cara = 0; cara < faces.size(); ++cara) {
+
+        Face currentFace = faces[cara];
+
+        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
+        {
+          // Assignem les normals de la cara al vector del Array de normals
+          data[offset++] = currentFace.normal.x;
+          data[offset++] = currentFace.normal.y;
+          data[offset++] = currentFace.normal.z;
+
+          // Assignem els vertxs als vertex array
+          Point currentPosition = vertices[faces[cara].vertices[vertex]].coord;
+          data[offset++] = currentPosition.x;
+          data[offset++] = currentPosition.y;
+          data[offset++] = currentPosition.z;
+        }
+
+        offset += 9;
+    }
+
     // We are being provided the id of a free buffer object
     glGenBuffers(1, &bufferId);
     // We specify the buffer object mode and we provide the id given by the server side
     glBindBuffer(GL_ARRAY_BUFFER_ARB, bufferId);
-    // We send the data to the buffer object
-    glBufferDataARB(GL_ARRAY_BUFFER_ARB, this->vertexNumber * 3, this->vertexs, GL_STATIC_DRAW_ARB);*/
+
+    // We send the data to the buffer
+    glBufferDataARB(GL_ARRAY_BUFFER_ARB, this->vertexNumber * 3, this->vertexs, GL_STATIC_DRAW_ARB);
+    //glBufferData(GL_ARRAY_BUFFER, dataSize, data, GL_STATIC_DRAW);*/
 }
 
-void Model::renderVertexArray()
-{
+void Model::RenderVBO()
+{/*
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, vboId1);
+
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
-    glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
-    glNormalPointer(GL_FLOAT, 0, this->normals);
+    glNormalPointer(GL_FLOAT, sizeof(Vertex), 0);
+    glVertexPointer(3, GL_FLOAT, sizeof(Vertex), 3);
+
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);*/
+}
+
+void Model::RenderVertexArray()
+{
+    cout << "Render vertex array arribo" << endl;
+
+    cout << "Punter als vertexs: " << this->vertexs << endl;
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+
+    glVertexPointer(3, GL_FLOAT, 0, &this->vertexs);
+    glNormalPointer(GL_FLOAT, 0, &this->normals);
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
+
+    /*
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+
+    glVertexPointer(3, GL_FLOAT, 3, this->vertexs);
+    glNormalPointer(GL_FLOAT, 0, this->normals);
+
+    glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);*/
 }
 
 /* Render del model amb il·luminacio, usant materials */

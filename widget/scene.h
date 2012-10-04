@@ -24,6 +24,8 @@ class Scene
 
   Light light0;
 
+  void BasicRender(int mode);
+
 
  public:
   static MaterialLib matlib;	  // col·lecció de materials

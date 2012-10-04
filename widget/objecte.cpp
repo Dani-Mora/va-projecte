@@ -72,7 +72,8 @@ void Objecte::Render(Model &modelObj, int mode)
 
     if (mode == 0) modelObj.RenderColor();
     else if (mode == 1) modelObj.RenderColorFals(this->getId());
-    else if (mode == 2) modelObj.renderVertexArray();
+    else if (mode == 2) modelObj.RenderVertexArray();
+    else if (mode == 3) modelObj.RenderVBO();
     else modelObj.RenderLight();
 
     modelObj.boundingBox().Render();
