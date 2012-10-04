@@ -1,3 +1,4 @@
+#define GL_GLEXT_PROTOTYPES
 #include "model.h"
 #include <cmath>
 #include <string>
@@ -30,7 +31,6 @@ void Model::updateBoundingBox()
 
 /* VERTEX ARRAY */
 
-
 void Model::printVertexArray () {
     cout << "Vertex Array: [";
     for (unsigned int pos = 0; pos < vertexNumber*3; ++pos) {
@@ -39,60 +39,75 @@ void Model::printVertexArray () {
     cout << "]" << endl;
 }
 
-
-
-void Model::generateVertexArray()
+void Model::InitVertexArray()
 {
-
+    // Each face has 3 vertex (triangles)
     this->vertexNumber = this->faces.size()*3;
+    // We are inserting both normals and vertexs
+    this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
+    this->normals = (float*) malloc(sizeof(float)*vertexNumber*3);
 
-    // Calculem la mida del vector de normals i de vèrtexs
-    normals = (float*) malloc(sizeof(float)*vertexNumber*3);
-    vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
+    int offset = 0;
 
-    cout << "El model té " << faces.size() << " cares" << endl;
-    cout << "Consequentment, té " << vertexNumber*3 << " vertexs" << endl;
     for(unsigned int cara = 0; cara < faces.size(); ++cara) {
 
-        for (unsigned int vertex = 0; vertex < faces[cara].vertices.size(); ++vertex)
-        {
-          // Assignem les normals de la cara al vector del Array de normals
-          this->normals[cara*3*3+vertex*3] = faces[cara].normal.x;
-          this->normals[cara*3*3+vertex*3+1] = faces[cara].normal.y;
-          this->normals[cara*3*3+vertex*3+2] = faces[cara].normal.z;
+            Face currentFace = faces[cara];
 
-          // Assignem els vertxs als vertex array
-          Point p = vertices[faces[cara].vertices[vertex]].coord;
-          this->vertexs [cara*3*3+vertex*3] = p.x;
-          this->vertexs[cara*3*3+vertex*3+1] = p.y;
-          this->vertexs[cara*3*3+vertex*3+2] = p.z;
-        }
-    }
+            for (unsigned int vertex = 0; vertex < currentFace.vertices.size(); ++vertex)
+            {
+              // Assignem les normals de la cara al vector del Array de normals
+              this->normals[offset] = currentFace.normal.x;
+              this->normals[offset+1] = currentFace.normal.y;
+              this->normals[offset+2] = currentFace.normal.z;
 
-    this->printVertexArray();
+              // Assignem els vertxs als vertex array
+              Point currentPosition = vertices[faces[cara].vertices[vertex]].coord;
+              this->vertexs[offset] = currentPosition.x;
+              this->vertexs[offset+1] = currentPosition.y;
+              this->vertexs[offset+2] = currentPosition.z;
+
+              offset += 3;
+            }
+     }
 }
 
-void Model::renderVertexArray()
+void Model::RenderVertexArray()
 {
-    cout << "Start render" << endl;
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
-    cout << "Vertex Array enabled" << endl;
-
     glVertexPointer(3, GL_FLOAT, 0, this->vertexs);
-    //glColorPointer(3, GL_FLOAT, 0, this->colors);
     glNormalPointer(GL_FLOAT, 0, this->normals);
-
-    cout << "Vertex Array created" << endl;
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
-    cout << "Vertex Array drawn" << endl;
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
+}
 
-    cout << "finish render" << endl;
+//* VERTEX BUFFER OBJECTS *//
+
+void Model::InitVBO()
+{
+    // We are being provided the id of a free buffer object
+    glGenBuffers(1, &bufferId);
+    // We specify the buffer object mode and we provide the id given by the server side
+    glBindBuffer(GL_ARRAY_BUFFER_ARB, bufferId);
+    // We send the data to the buffer
+    glBufferData(GL_ARRAY_BUFFER_ARB, this->vertexNumber * 3, this->vertexs, GL_STATIC_DRAW_ARB);
+}
+
+void Model::RenderVBO()
+{
+    /*glBindBufferARB(GL_ARRAY_BUFFER_ARB, vboId1);
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+
+    glNormalPointer(GL_FLOAT, sizeof(Vertex), 0);
+    glVertexPointer(3, GL_FLOAT, sizeof(Vertex), 3);
+
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);*/
 }
 
 /* Render del model amb il·luminacio, usant materials */
