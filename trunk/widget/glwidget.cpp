@@ -179,7 +179,7 @@ void GLWidget::paintGL( void )
       break;
     case (BUFFER_OBJECT):
        cout << "Vertex Buffer Object" << endl;
-      this->scene.renderVertexBufferObject();
+      this->scene.RenderVertexBufferObject();
       break;
     default:
        cout << "Immediate" << endl;
