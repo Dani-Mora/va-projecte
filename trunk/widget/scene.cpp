@@ -172,7 +172,8 @@ Objecte Scene::obteObjecte(int num)
 void Scene::setModel(Model &modelOb)
 {
     modelObj = modelOb;
-    modelObj.generateVertexArray();
+    modelObj.InitVertexArray();
+    //modelObj.InitVBO();
 }
 
 Model Scene::getModel()
