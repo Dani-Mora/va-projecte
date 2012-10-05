@@ -2,6 +2,7 @@
 #define GLWIDGET_H
 
 #include <QGLWidget>
+#include<QTimer>
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QFileDialog>
@@ -57,6 +58,12 @@ protected:
     typedef  enum {IMMEDIATE, VERTEX_ARRAY, BUFFER_OBJECT} RenderType;
     RenderType renderType;
 
+    // FPS
+    double frameCount;
+    QTimer *timer;
+    void initializeFPSMonitoring();
+    void increaseFPS();
+
 public slots:
      void LoadObject ();
      void Reset();
@@ -64,6 +71,10 @@ public slots:
      void setImmediateRender();
      void setVertexArrayRender();
      void setVertexBufferObjectRender();
+     void refreshFPS();
+
+signals:
+     void updateFPS(double a);
 
 };
 

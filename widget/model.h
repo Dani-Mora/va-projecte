@@ -35,12 +35,12 @@ class Model
   float *normals;
   //float *colors;
   int vertexNumber;
-  void RenderVertexArray();
-  void InitVertexArray();
+  void RenderVA();
+  void initVertexArray();
 
   // VBO
-  void RenderVBO();
-  void InitVBO();
+  void renderVBO();
+  void initVBO();
 
   void setCaraSel(int c);
   int caraSel;
@@ -58,7 +58,8 @@ class Model
  private:
   std::string name;
   Box _boundingBox;   // caixa contenidora de l'objecte.
-  unsigned int bufferId; // for the VBO
+  unsigned int vertexBufferID;
+  unsigned int normalBufferID;
 };
 
 
