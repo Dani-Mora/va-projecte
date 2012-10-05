@@ -102,6 +102,9 @@ void Model::initVBO()
     glGenBuffers(1, &this->normalBufferID);
     glBindBufferARB(GL_ARRAY_BUFFER_ARB, normalBufferID);
     glBufferDataARB(GL_ARRAY_BUFFER, bufferSize , this->normals, GL_STATIC_DRAW_ARB);
+
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
+    glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
 }
 
 void Model::renderVBO()
@@ -117,6 +120,8 @@ void Model::renderVBO()
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
+    glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
 
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
