@@ -39,7 +39,7 @@ void Model::printVertexArray () {
     cout << "]" << endl;
 }
 
-void Model::InitVertexArray()
+void Model::initVertexArray()
 {
     // Each face has 3 vertex (triangles)
     this->vertexNumber = this->faces.size()*3;
@@ -71,7 +71,7 @@ void Model::InitVertexArray()
      }
 }
 
-void Model::RenderVertexArray()
+void Model::RenderVA()
 {
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
@@ -87,27 +87,30 @@ void Model::RenderVertexArray()
 
 //* VERTEX BUFFER OBJECTS *//
 
-void Model::InitVBO()
+void Model::initVBO()
 {
-    // We are being provided the id of a free buffer object
-    glGenBuffers(1, &bufferId);
-    // We specify the buffer object mode and we provide the id given by the server side
-    glBindBuffer(GL_ARRAY_BUFFER_ARB, bufferId);
-    // We send the data to the buffer
-    glBufferData(GL_ARRAY_BUFFER_ARB, this->vertexNumber * 3, this->vertexs, GL_STATIC_DRAW_ARB);
+    long bufferSize = this->vertexNumber*3*sizeof(float);
+
+    // VERTEXS
+    glGenBuffers(1, &this->vertexBufferID);
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertexBufferID);
+    glBufferDataARB(GL_ARRAY_BUFFER_ARB, bufferSize, this->vertexs, GL_STATIC_DRAW_ARB);
+
+    // NORMALS
+    glGenBuffers(1, &this->normalBufferID);
+    glBindBufferARB(GL_ARRAY_BUFFER_ARB, normalBufferID);
+    glBufferDataARB(GL_ARRAY_BUFFER, bufferSize , this->normals, GL_STATIC_DRAW_ARB);
 }
 
-void Model::RenderVBO()
-{
-    /*glBindBufferARB(GL_ARRAY_BUFFER_ARB, vboId1);
+void Model::renderVBO()
+{   
+    glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->vertexBufferID);
+    glVertexPointer(3, GL_FLOAT, 0, (char *) NULL );
 
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
+    glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->normalBufferID );
+    glNormalPointer(GL_FLOAT, 0, (char *) NULL );
 
-    glNormalPointer(GL_FLOAT, sizeof(Vertex), 0);
-    glVertexPointer(3, GL_FLOAT, sizeof(Vertex), 3);
-
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);*/
+    //glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 }
 
 /* Render del model amb il·luminacio, usant materials */

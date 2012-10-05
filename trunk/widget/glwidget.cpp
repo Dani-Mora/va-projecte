@@ -49,8 +49,10 @@ void GLWidget::initializeGL()
 
   // Initial render type: Immediate
   renderType = IMMEDIATE;
-}
 
+  // FPS
+  this->initializeFPSMonitoring();
+}
 
 double GLWidget::getDistancia()
 {
@@ -186,9 +188,11 @@ void GLWidget::paintGL( void )
       this->scene.RenderLight();
       break;
   };
+
+  this->increaseFPS();
 }  
 
-
+/* EVENTS */
 
 void GLWidget::mousePressEvent( QMouseEvent *e)
 {
@@ -263,7 +267,6 @@ void GLWidget::mouseMoveEvent(QMouseEvent *e)
 /* Modifica l'VRP i el fovy en mode perspectiva */
 void GLWidget::camOptima(float radi, Point centre)
 {
-
     // fem que l'objecte s'ajusti al màxim a la camara
     float cc = (eye.x - centre.x) * (eye.x - centre.x) + (eye.y - centre.y) * (eye.y - centre.y) + (eye.z - centre.z) * (eye.z - centre.z);
     cc = sqrt(cc);
@@ -274,9 +277,33 @@ void GLWidget::camOptima(float radi, Point centre)
 
     fovy = 2*angle; // actualitzem angle obertura
     VRP = centre; // actualitzem punt on mirem
-
 }
 
+
+/* FPS Refreshing */
+
+void GLWidget::initializeFPSMonitoring()
+{
+    // Initialize frame count
+    this->frameCount = 0;
+
+    // Initialize timer
+    this->timer = new QTimer();
+    this->connect(this->timer, SIGNAL(timeout()), this, SLOT(refreshFPS()));
+    this->timer->start(1000);
+}
+
+void GLWidget::refreshFPS()
+{
+    emit this->updateFPS(this->frameCount);
+    this->frameCount = 0;
+}
+
+void GLWidget::increaseFPS()
+{
+    // Increase frame count
+    this->frameCount++;
+}
 
 
 /* SLOTS */
@@ -312,8 +339,6 @@ void GLWidget::LoadObject()
     updateGL();
   }
 }
-
-/* SLOTS */
 
 void GLWidget::resetPerspective()
 {
