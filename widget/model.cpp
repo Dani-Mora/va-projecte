@@ -113,10 +113,10 @@ void Model::renderVBO()
     glEnableClientState(GL_NORMAL_ARRAY);
 
     glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->vertexBufferID);
-    glVertexPointer(3, GL_FLOAT, 0, (char *) NULL );
+    glVertexPointer(3, GL_FLOAT, 0, 0 );
 
     glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->normalBufferID );
-    glNormalPointer(GL_FLOAT, 0, (char *) NULL );
+    glNormalPointer(GL_FLOAT, 0, 0 );
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
