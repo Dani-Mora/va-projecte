@@ -7,6 +7,8 @@
 #include "box.h"
 #include "face.h"
 #include "material_lib.h"
+#include <gl/GL.h>
+
 
 using namespace std;
 
@@ -58,8 +60,8 @@ class Model
  private:
   std::string name;
   Box _boundingBox;   // caixa contenidora de l'objecte.
-  unsigned int vertexBufferID;
-  unsigned int normalBufferID;
+  GLuint vertexBufferID;
+  GLuint normalBufferID;
 };
 
 
