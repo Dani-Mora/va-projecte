@@ -23,29 +23,34 @@ static const uint qt_meta_data_GLWidget[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      12,   10,    9,    9, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      10,    9,    9,    9, 0x0a,
-      23,    9,    9,    9, 0x0a,
-      31,    9,    9,    9, 0x0a,
-      50,    9,    9,    9, 0x0a,
-      71,    9,    9,    9, 0x0a,
-      94,    9,    9,    9, 0x0a,
+      30,    9,    9,    9, 0x0a,
+      43,    9,    9,    9, 0x0a,
+      51,    9,    9,    9, 0x0a,
+      70,    9,    9,    9, 0x0a,
+      91,    9,    9,    9, 0x0a,
+     114,    9,    9,    9, 0x0a,
+     144,    9,    9,    9, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_GLWidget[] = {
-    "GLWidget\0\0LoadObject()\0Reset()\0"
-    "resetPerspective()\0setImmediateRender()\0"
-    "setVertexArrayRender()\0"
+    "GLWidget\0\0a\0updateFPS(double)\0"
+    "LoadObject()\0Reset()\0resetPerspective()\0"
+    "setImmediateRender()\0setVertexArrayRender()\0"
     "setVertexBufferObjectRender()\0"
+    "refreshFPS()\0"
 };
 
 const QMetaObject GLWidget::staticMetaObject = {
@@ -77,16 +82,25 @@ int GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: LoadObject(); break;
-        case 1: Reset(); break;
-        case 2: resetPerspective(); break;
-        case 3: setImmediateRender(); break;
-        case 4: setVertexArrayRender(); break;
-        case 5: setVertexBufferObjectRender(); break;
+        case 0: updateFPS((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 1: LoadObject(); break;
+        case 2: Reset(); break;
+        case 3: resetPerspective(); break;
+        case 4: setImmediateRender(); break;
+        case 5: setVertexArrayRender(); break;
+        case 6: setVertexBufferObjectRender(); break;
+        case 7: refreshFPS(); break;
         default: ;
         }
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
+}
+
+// SIGNAL 0
+void GLWidget::updateFPS(double _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

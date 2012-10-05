@@ -92,6 +92,8 @@ void Model::initVBO()
     long bufferSize = this->vertexNumber*3*sizeof(float);
 
     // VERTEXS
+
+    // Genera el buffer object
     glGenBuffers(1, &this->vertexBufferID);
     glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertexBufferID);
     glBufferDataARB(GL_ARRAY_BUFFER_ARB, bufferSize, this->vertexs, GL_STATIC_DRAW_ARB);
@@ -104,13 +106,20 @@ void Model::initVBO()
 
 void Model::renderVBO()
 {   
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+
     glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->vertexBufferID);
     glVertexPointer(3, GL_FLOAT, 0, (char *) NULL );
 
     glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->normalBufferID );
     glNormalPointer(GL_FLOAT, 0, (char *) NULL );
 
-    //glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
+    glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
+
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
 }
 
 /* Render del model amb il·luminacio, usant materials */
