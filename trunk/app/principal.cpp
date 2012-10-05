@@ -7,9 +7,13 @@ Principal::Principal(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Sent
     this->connect(this->ui->immediateButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setImmediateRender()));
     this->connect(this->ui->vertexArrayButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexArrayRender()));
     this->connect(this->ui->bufferObjectButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexBufferObjectRender()));
+
+    // Received
+    this->connect(this->ui->gLWidget, SIGNAL(updateFPS(double)), this->ui->fps, SLOT(setNum(double)));
 }
 
 Principal::~Principal()
