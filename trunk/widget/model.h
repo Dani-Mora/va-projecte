@@ -35,7 +35,7 @@ class Model
   // Vertex Arrays
   float *vertexs;
   float *normals;
-  //float *colors;
+  float *colors;
   int vertexNumber;
   void RenderVA();
   void initVertexArray();
