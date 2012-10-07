@@ -43,6 +43,7 @@ void Model::initVertexArray()
 {
     // Each face has 3 vertex (triangles)
     this->vertexNumber = this->faces.size()*3;
+
     // We are inserting both normals and vertexs
     this->vertexs = (float*) malloc(sizeof(float)*vertexNumber*3);
     this->normals = (float*) malloc(sizeof(float)*vertexNumber*3);
@@ -95,16 +96,16 @@ void Model::initVBO()
 
     // Genera el buffer object
     glGenBuffers(1, &this->vertexBufferID);
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertexBufferID);
-    glBufferDataARB(GL_ARRAY_BUFFER_ARB, bufferSize, this->vertexs, GL_STATIC_DRAW_ARB);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
+    glBufferData(GL_ARRAY_BUFFER, bufferSize, this->vertexs, GL_STATIC_DRAW);
 
     // NORMALS
     glGenBuffers(1, &this->normalBufferID);
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, normalBufferID);
-    glBufferDataARB(GL_ARRAY_BUFFER, bufferSize , this->normals, GL_STATIC_DRAW_ARB);
+    glBindBuffer(GL_ARRAY_BUFFER, normalBufferID);
+    glBufferData(GL_ARRAY_BUFFER, bufferSize , this->normals, GL_STATIC_DRAW);
 
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-    glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void Model::renderVBO()
@@ -112,16 +113,16 @@ void Model::renderVBO()
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
-    glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->vertexBufferID);
+    glBindBuffer( GL_ARRAY_BUFFER, this->vertexBufferID);
     glVertexPointer(3, GL_FLOAT, 0, 0 );
 
-    glBindBufferARB( GL_ARRAY_BUFFER_ARB, this->normalBufferID );
+    glBindBuffer( GL_ARRAY_BUFFER, this->normalBufferID );
     glNormalPointer(GL_FLOAT, 0, 0 );
 
     glDrawArrays(GL_TRIANGLES, 0, vertexNumber);
 
-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-    glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
