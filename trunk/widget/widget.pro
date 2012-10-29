@@ -9,7 +9,6 @@ TEMPLATE = lib
 
 HEADERS = glwidgetplugin.h
 SOURCES = glwidgetplugin.cpp
-RESOURCES = icons.qrc
 LIBS += -L.
 
 target.path = ~/.designer/plugins/designer
