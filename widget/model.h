@@ -9,7 +9,6 @@
 #include "material_lib.h"
 
 
-
 using namespace std;
 
 // Model - permet representar un objecte 3D
@@ -62,6 +61,7 @@ class Model
   Box _boundingBox;   // caixa contenidora de l'objecte.
   unsigned int vertexBufferID;
   unsigned int normalBufferID;
+  unsigned int colorBufferID;
 };
 
 
