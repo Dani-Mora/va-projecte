@@ -55,7 +55,7 @@ void GLWidget::initializeGL()
   // FPS
   this->initializeFPSMonitoring();
 
-  // Shaders
+  // Shaders. Default -> no shaders
   this->initializeShaders();
 }
 
@@ -332,6 +332,8 @@ void GLWidget::initializeShaders()
 {
     glewInit();
 
+    this->program = glCreateProgram();
+
     this->vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
     this->fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
 }
@@ -428,15 +430,12 @@ void GLWidget::loadShader()
         }
 
         glShaderSource(idShader,1, &shaderCode, NULL);
-        free(charPath);
 
-        this->program = glCreateProgram();
 
         glCompileShader(idShader);
         glAttachShader(this->program, idShader);
 
         glLinkProgram(this->program);
-        glUseProgram(this->program);
 
         updateGL();
     }
@@ -444,4 +443,17 @@ void GLWidget::loadShader()
     {
         cout << "Invalid shader extension" << endl;
     }
+}
+
+void GLWidget::setShaders(bool state)
+{
+    if (state)
+    {
+        glUseProgram(this->program);
+    }
+    else
+    {
+        glUseProgram(NULL);
+    }
+    updateGL();
 }

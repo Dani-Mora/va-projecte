@@ -79,6 +79,7 @@ public slots:
      void setVertexBufferObjectRender();
      void refreshFPS();
      void loadShader();
+     void setShaders(bool a);
 
 signals:
      void updateFPS(double a);
