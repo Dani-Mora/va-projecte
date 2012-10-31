@@ -64,6 +64,12 @@ protected:
     void initializeFPSMonitoring();
     void increaseFPS();
 
+    // Shaders
+    unsigned int vertexShaderId;
+    unsigned int fragmentShaderId;
+    unsigned int program;
+    void initializeShaders();
+
 public slots:
      void LoadObject ();
      void Reset();
@@ -72,6 +78,7 @@ public slots:
      void setVertexArrayRender();
      void setVertexBufferObjectRender();
      void refreshFPS();
+     void loadShader();
 
 signals:
      void updateFPS(double a);
