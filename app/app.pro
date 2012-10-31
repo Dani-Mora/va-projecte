@@ -10,7 +10,7 @@ TARGET = PracticaVIG
 TEMPLATE = app
 
 INCLUDEPATH += ../widget ../crono
-LIBS += ../widget/libglwidgetplugin.so
+LIBS += ../widget/libglwidgetplugin.so -lGLEW -lGLU -lGL
 
 SOURCES += main.cpp\
         principal.cpp \
