@@ -9,7 +9,8 @@ HEADERS += glwidget.h \
     scene.h \
     material_lib.h \
     point.h \
-    light.h
+    light.h \
+    textfile.h
 SOURCES += glwidget.cpp \
     box.cpp \
     color.cpp \
@@ -21,6 +22,9 @@ SOURCES += glwidget.cpp \
     objecte.cpp \
     scene.cpp \
     point.cpp \
-    light.cpp
+    light.cpp \
+    textfile.cpp
 
 FORMS +=
+
+

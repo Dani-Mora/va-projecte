@@ -1,6 +1,8 @@
+#include <GL/glew.h>
 #include "glwidget.h"
 #include <math.h>
-
+#include <QString>
+#include "textfile.h"
 
 GLWidget::GLWidget(QWidget *parent) :
     QGLWidget(parent)
@@ -52,6 +54,9 @@ void GLWidget::initializeGL()
 
   // FPS
   this->initializeFPSMonitoring();
+
+  // Shaders
+  this->initializeShaders();
 }
 
 double GLWidget::getDistancia()
@@ -173,18 +178,13 @@ void GLWidget::paintGL( void )
   switch(renderType)
   {
 
-   cout << "Render type";
-
     case (VERTEX_ARRAY):
-        cout << "Vertex Array" << endl;
       this->scene.RenderVertexArray();
       break;
     case (BUFFER_OBJECT):
-       cout << "Vertex Buffer Object" << endl;
       this->scene.RenderVertexBufferObject();
       break;
     default:
-       cout << "Immediate" << endl;
       this->scene.RenderLight();
       break;
   };
@@ -305,6 +305,36 @@ void GLWidget::increaseFPS()
     this->frameCount++;
 }
 
+/* Shaders */
+
+char* convertStringToChar(QString path)
+{
+    QByteArray bArray = path.toLocal8Bit();
+    return bArray.data();
+}
+
+bool isVertexShader(QString path)
+{
+    return path.endsWith(".vert");
+}
+
+bool isFragmentShader(QString path)
+{
+    return path.endsWith(".frag");
+}
+
+bool isShaderPath(QString path)
+{
+    return (isFragmentShader(path) || isVertexShader(path));
+}
+
+void GLWidget::initializeShaders()
+{
+    glewInit();
+
+    this->vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
+    this->fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
+}
 
 /* SLOTS */
 
@@ -361,21 +391,57 @@ void GLWidget::Reset()
 
 void GLWidget::setImmediateRender()
 {
-    cout << "Render type: immediate" << endl;
     renderType = IMMEDIATE;
     updateGL();
 }
 
 void GLWidget::setVertexArrayRender()
 {
-    cout << "Render type: vertex array" << endl;
     renderType = VERTEX_ARRAY;
     updateGL();
 }
 
 void GLWidget::setVertexBufferObjectRender()
 {
-    cout << "Render type: buffer object" << endl;
     renderType = BUFFER_OBJECT;
     updateGL();
+}
+
+// We only read shaders that end with .frag and .vert so we can identify them
+void GLWidget::loadShader()
+{
+    QString shaderPath = QFileDialog::getOpenFileName(this, tr("Open File"), "../data", tr("Shaders (FS/VS) (*.frag *.vert)"));
+    if (isShaderPath(shaderPath))
+    {
+        char *charPath = convertStringToChar(shaderPath);
+        const char *shaderCode = textFileRead(charPath);
+
+        int idShader;
+
+        if (isVertexShader(shaderPath))
+        {
+            idShader = this->vertexShaderId;
+        }
+        else
+        {
+            idShader = this->fragmentShaderId;
+        }
+
+        glShaderSource(idShader,1, &shaderCode, NULL);
+        free(charPath);
+
+        this->program = glCreateProgram();
+
+        glCompileShader(idShader);
+        glAttachShader(this->program, idShader);
+
+        glLinkProgram(this->program);
+        glUseProgram(this->program);
+
+        updateGL();
+    }
+    else
+    {
+        cout << "Invalid shader extension" << endl;
+    }
 }
