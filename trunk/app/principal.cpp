@@ -11,6 +11,7 @@ Principal::Principal(QWidget *parent) :
     this->connect(this->ui->immediateButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setImmediateRender()));
     this->connect(this->ui->vertexArrayButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexArrayRender()));
     this->connect(this->ui->bufferObjectButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexBufferObjectRender()));
+    this->connect(this->ui->shaderLoader, SIGNAL(clicked()), this->ui->gLWidget, SLOT(loadShader()));
 
     // Received
     this->connect(this->ui->gLWidget, SIGNAL(updateFPS(double)), this->ui->fps, SLOT(setNum(double)));

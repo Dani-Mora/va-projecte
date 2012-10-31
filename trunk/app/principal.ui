@@ -210,23 +210,21 @@
               </layout>
              </widget>
             </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox_3">
-              <property name="text">
-               <string>Z-Buffer + Culling</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
-            <string>Tab 2</string>
+            <string>Shaders</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_7"/>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QPushButton" name="shaderLoader">
+              <property name="text">
+               <string>Carregar Shader</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -333,22 +331,6 @@
     <hint type="destinationlabel">
      <x>398</x>
      <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_3</sender>
-   <signal>clicked()</signal>
-   <receiver>gLWidget</receiver>
-   <slot>hiddenParts()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>884</x>
-     <y>342</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>390</x>
-     <y>273</y>
     </hint>
    </hints>
   </connection>
