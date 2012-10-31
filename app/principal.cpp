@@ -12,6 +12,7 @@ Principal::Principal(QWidget *parent) :
     this->connect(this->ui->vertexArrayButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexArrayRender()));
     this->connect(this->ui->bufferObjectButton, SIGNAL(clicked()), this->ui->gLWidget, SLOT(setVertexBufferObjectRender()));
     this->connect(this->ui->shaderLoader, SIGNAL(clicked()), this->ui->gLWidget, SLOT(loadShader()));
+    this->connect(this->ui->shaderActivation, SIGNAL(toggled(bool)), this->ui->gLWidget, SLOT(setShaders(bool)));
 
     // Received
     this->connect(this->ui->gLWidget, SIGNAL(updateFPS(double)), this->ui->fps, SLOT(setNum(double)));
