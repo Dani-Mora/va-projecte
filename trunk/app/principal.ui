@@ -117,7 +117,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -216,11 +216,18 @@
            <attribute name="title">
             <string>Shaders</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
              <widget class="QPushButton" name="shaderLoader">
               <property name="text">
                <string>Carregar Shader</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="shaderActivation">
+              <property name="text">
+               <string>Shaders activats</string>
               </property>
              </widget>
             </item>
