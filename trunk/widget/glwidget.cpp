@@ -338,6 +338,23 @@ void GLWidget::initializeShaders()
     this->fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
 }
 
+void GLWidget::setUniformFloatValue(const char *name, float value)
+{
+    GLint location = glGetUniformLocation(this->program, name);
+    cout << "Location: " << location << endl;
+    if (location != -1)
+    {
+        glUniform1f(location, value);
+        cout << "Variable " << name << " found" << endl;
+    }
+    else
+    {
+        cout << "Variable " << name << " not found" << endl;
+    }
+
+    updateGL();
+}
+
 /* SLOTS */
 
 /* Object Loader Slot */
@@ -456,4 +473,26 @@ void GLWidget::setShaders(bool state)
         glUseProgram(NULL);
     }
     updateGL();
+}
+
+void GLWidget::setCheckerboardValue(int value)
+{
+    float valor = (float) value;
+    cout << "Envio valor " << value << endl;
+    int params;
+    glGetProgramiv(this->program, GL_ACTIVE_UNIFORMS,  &params);
+    cout << "uniform variables num: " << params << endl;
+
+    std::vector<GLchar> nameData(256);
+    for(int unif = 0; unif < params; ++unif)
+    {
+      GLint arraySize = 0;
+      GLenum type = 0;
+      GLsizei actualLength = 0;
+      glGetActiveUniform(this->program, unif, nameData.size(), &actualLength, &arraySize, &type, &nameData[0]);
+      std::string name((char*)&nameData[0], actualLength - 1);
+      cout << "name: " << name << endl;
+    }
+
+    this->setUniformFloatValue("celes", valor);
 }

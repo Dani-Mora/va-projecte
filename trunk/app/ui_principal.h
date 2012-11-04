@@ -22,6 +22,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
+#include <QtGui/QSlider>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QTabWidget>
 #include <QtGui/QVBoxLayout>
@@ -54,9 +55,16 @@ public:
     QRadioButton *immediateButton;
     QRadioButton *vertexArrayButton;
     QRadioButton *bufferObjectButton;
-    QCheckBox *checkBox_3;
     QWidget *tab_2;
-    QVBoxLayout *verticalLayout_7;
+    QVBoxLayout *verticalLayout_6;
+    QPushButton *shaderLoader;
+    QCheckBox *shaderActivation;
+    QSpacerItem *verticalSpacer;
+    QGroupBox *uniformBox;
+    QHBoxLayout *horizontalLayout_5;
+    QHBoxLayout *horizontalLayout_4;
+    QSlider *uniformSlide;
+    QLabel *uniformLabel;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton;
@@ -195,19 +203,55 @@ public:
 
         verticalLayout_3->addWidget(renderBox);
 
-        checkBox_3 = new QCheckBox(tab);
-        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
-        checkBox_3->setChecked(true);
-
-        verticalLayout_3->addWidget(checkBox_3);
-
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        verticalLayout_7 = new QVBoxLayout(tab_2);
-        verticalLayout_7->setSpacing(6);
-        verticalLayout_7->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        verticalLayout_6 = new QVBoxLayout(tab_2);
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        shaderLoader = new QPushButton(tab_2);
+        shaderLoader->setObjectName(QString::fromUtf8("shaderLoader"));
+
+        verticalLayout_6->addWidget(shaderLoader);
+
+        shaderActivation = new QCheckBox(tab_2);
+        shaderActivation->setObjectName(QString::fromUtf8("shaderActivation"));
+
+        verticalLayout_6->addWidget(shaderActivation);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer);
+
+        uniformBox = new QGroupBox(tab_2);
+        uniformBox->setObjectName(QString::fromUtf8("uniformBox"));
+        horizontalLayout_5 = new QHBoxLayout(uniformBox);
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        uniformSlide = new QSlider(uniformBox);
+        uniformSlide->setObjectName(QString::fromUtf8("uniformSlide"));
+        uniformSlide->setMinimum(1);
+        uniformSlide->setMaximum(32);
+        uniformSlide->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_4->addWidget(uniformSlide);
+
+        uniformLabel = new QLabel(uniformBox);
+        uniformLabel->setObjectName(QString::fromUtf8("uniformLabel"));
+
+        horizontalLayout_4->addWidget(uniformLabel);
+
+
+        horizontalLayout_5->addLayout(horizontalLayout_4);
+
+
+        verticalLayout_6->addWidget(uniformBox);
+
         tabWidget->addTab(tab_2, QString());
 
         verticalLayout_5->addWidget(tabWidget);
@@ -242,10 +286,9 @@ public:
         retranslateUi(Principal);
         QObject::connect(pushButton, SIGNAL(clicked()), Principal, SLOT(close()));
         QObject::connect(reset, SIGNAL(clicked()), gLWidget, SLOT(Reset()));
-        QObject::connect(checkBox_3, SIGNAL(clicked()), gLWidget, SLOT(hiddenParts()));
         QObject::connect(pushButton_2, SIGNAL(clicked()), gLWidget, SLOT(LoadObject()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Principal);
@@ -263,9 +306,12 @@ public:
         immediateButton->setText(QApplication::translate("Principal", "Immediat", 0, QApplication::UnicodeUTF8));
         vertexArrayButton->setText(QApplication::translate("Principal", "Vertex Array", 0, QApplication::UnicodeUTF8));
         bufferObjectButton->setText(QApplication::translate("Principal", "Vertex Buffer Oject", 0, QApplication::UnicodeUTF8));
-        checkBox_3->setText(QApplication::translate("Principal", "Z-Buffer + Culling", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Principal", "Escena", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Principal", "Tab 2", 0, QApplication::UnicodeUTF8));
+        shaderLoader->setText(QApplication::translate("Principal", "Carregar Shader", 0, QApplication::UnicodeUTF8));
+        shaderActivation->setText(QApplication::translate("Principal", "Shaders activats", 0, QApplication::UnicodeUTF8));
+        uniformBox->setTitle(QApplication::translate("Principal", "Uniform variables", 0, QApplication::UnicodeUTF8));
+        uniformLabel->setText(QApplication::translate("Principal", "Checkerboard cells", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Principal", "Shaders", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("Principal", "&Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
