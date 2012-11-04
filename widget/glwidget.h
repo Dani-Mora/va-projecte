@@ -69,6 +69,8 @@ protected:
     unsigned int fragmentShaderId;
     unsigned int program;
     void initializeShaders();
+    void setUniformFloatValue(const char *name, float value);
+
 
 public slots:
      void LoadObject ();
@@ -80,6 +82,7 @@ public slots:
      void refreshFPS();
      void loadShader();
      void setShaders(bool a);
+     void setCheckerboardValue(int a);
 
 signals:
      void updateFPS(double a);
